@@ -14,14 +14,14 @@ class NotificationFactory {
 
             case "push":
                 System.out.println("Enviando push...");
-                return new emailNotification();
+                return new pushNotification();
 
             case "sms":
                 System.out.println("Enviando sms...");
-                return new emailNotification();
+                return new smsNotification();
             
             default:
-                throw new IllegalArgumentException("Tipo de notifiação inválido: ");
+                throw new IllegalArgumentException("Tipo de notifiação inválido: " + mean);
         }        
     }
 }
