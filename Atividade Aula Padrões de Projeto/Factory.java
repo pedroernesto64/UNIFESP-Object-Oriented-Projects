@@ -5,28 +5,27 @@ class pushNotification implements Notification {}
 class smsNotification implements Notification {}
 
 class NotificationFactory {
-
-    public static Notification create (String mean) {
+    public static Notification create(String mean) {
+        Notification notification;
+        
         switch (mean.toLowerCase()) {
             case "email":
-                System.out.println("Enviando email...");
-                return new emailNotification();
-
-            case "push":
-                System.out.println("Enviando push...");
-                return new pushNotification();
-
+                notification = new EmailNotification(); // Classe concreta básica
+                break;
             case "sms":
-                System.out.println("Enviando sms...");
-                return new smsNotification();
-            
+                // Instancia o adaptador para a API externa
+                notification = new SMSAdapter(new ExternalSMSAPI());
+                break;
             default:
-                throw new IllegalArgumentException("Tipo de notifiação inválido: " + mean);
-        }        
+                throw new IllegalArgumentException("Tipo inválido");
+        }
+        
+        // Retorna o Proxy envolvendo a notificação criada
+        return new NotificationProxy(notification);
     }
 }
 
-public class Main { 
+public class Factory { 
 
   void f() {
     Notification n = NotificationFactory.create("email");  
@@ -41,7 +40,7 @@ public class Main {
   }
   
   public static void main(String [] args) {
-     Main m = new Main();
+     Factory m = new Factory();
      m.f();
      m.g();
      m.h(); 
