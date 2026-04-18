@@ -1,1 +1,1 @@
-
+Fazer qualquer coisa que utilize todos os padrões vistos até hoje
