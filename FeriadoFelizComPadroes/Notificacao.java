@@ -1,6 +1,8 @@
 // ======================================================
 // 6. DECORATOR: Adicionar funcionalidades à notificação
 // ======================================================
+import java.util.Date;
+
 interface Notificacao {
     String formatar(String msg);
 }

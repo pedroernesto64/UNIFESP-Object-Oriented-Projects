@@ -1,6 +1,8 @@
 // ======================================================
 // 3. OBSERVER: Sensores que notificam o painel central
 // ======================================================
+import java.util.*;
+
 interface Observer {
     void update(String sensorNome);
 }

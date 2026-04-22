@@ -6,7 +6,7 @@ interface InterfaceAlarme {
 }
 
 class AlarmeReal implements InterfaceAlarme {
-    public void armar() { System.out.println("Alarme armado com sucesso."); }
+    public void armar() { System.out.println("Alarme armado."); }
 }
 
 class AlarmeProxy implements InterfaceAlarme {
@@ -17,10 +17,7 @@ class AlarmeProxy implements InterfaceAlarme {
     public AlarmeProxy(String senha) { this.senhaInformada = senha; }
 
     public void armar() {
-        if (senhaCorreta.equals(senhaInformada)) {
-            alarmeReal.armar();
-        } else {
-            System.out.println("Acesso negado: Senha incorreta.");
-        }
+        if (senhaCorreta.equals(senhaInformada)) alarmeReal.armar();
+        else System.out.println("Acesso negado.");
     }
 }

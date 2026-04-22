@@ -6,9 +6,9 @@ interface AlertaStrategy {
 }
 
 class AlertaSilencioso implements AlertaStrategy {
-    public void executarAlerta() { System.out.println("-> Alerta: Enviando notificação silenciosa para a polícia."); }
+    public void executarAlerta() { System.out.println("-> Alerta: Enviando notificação silenciosa."); }
 }
 
 class AlertaSonoro implements AlertaStrategy {
-    public void executarAlerta() { System.out.println("-> Alerta: Tocando sirene de 120dB!"); }
+    public void executarAlerta() { System.out.println("-> Alerta: Tocando sirene!"); }
 }
