@@ -1,0 +1,6 @@
+public class PrioridadeDocenteStrategy extends PoliticaColisao{
+  public boolean verificaColisao(Reserva nova, List<Reserva> existentes){
+
+    return true;
+  }
+}
