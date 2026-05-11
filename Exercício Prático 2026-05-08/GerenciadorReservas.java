@@ -1,5 +1,5 @@
 class GerenciadorReserva {
-  private GerenciadorReserva() {}          // proíbe clientes de chamar new Logger()‏
+  private GerenciadorReserva() {}          // proíbe clientes de chamarem new GerenciadorReserva()‏
   
   private static GerenciadorReserva instance;           // instância única da classe
   
