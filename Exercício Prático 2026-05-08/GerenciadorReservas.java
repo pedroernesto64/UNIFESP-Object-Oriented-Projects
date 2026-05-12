@@ -1,13 +1,17 @@
-class GerenciadorReserva {
-  private PoliticaColisao strategy;
+import java.util.List;
+import java.util.ArrayList;
 
-  private GerenciadorReserva() {}          // proíbe clientes de chamarem new GerenciadorReserva()‏
+public class GerenciadorReservas extends Subject {
+  private PoliticaColisao strategy;
+  private List<Reserva> reservas = new ArrayList<>();
+
+  private GerenciadorReservas() {}          // proíbe clientes de chamarem new GerenciadorReservas()
   
-  private static GerenciadorReserva instance;           // instância única da classe
+  private static GerenciadorReservas instance;           // instância única da classe
   
-  public static GerenciadorReserva getInstance() {
+  public static GerenciadorReservas getInstance() {
     if(instance == null)        // primeira vez que se chama getInstance
-      instance = new GerenciadorReserva();
+      instance = new GerenciadorReservas();
     return instance;
   }
 
@@ -15,16 +19,28 @@ class GerenciadorReserva {
     this.strategy = strategy;
   }
   
-  public void criarReserva() {
-    
+  public boolean criarReserva(Reserva r) {
+    if (strategy != null && !strategy.verificaColisao(r, reservas)) {
+      return false; // collision detected
+    }
+    reservas.add(r);
+    notifyObservers(new Property("reserva_criada", r));
+    return true;
   }
 
-  public void removerReserva() {
-    
+  public boolean removerReserva(Reserva r) {
+    boolean removed = reservas.remove(r);
+    if (removed) notifyObservers(new Property("reserva_removida", r));
+    return removed;
   }
 
-  public void getSalasDisponiveis(){
+  public List<Reserva> getReservas() {
+    return reservas;
+  }
 
+  public void getSalasDisponiveis() {
+    // placeholder: implementation would consult inventory
+    System.out.println("[GerenciadorReservas] Salas disponíveis: (implementação pendente)");
   }
   
 
