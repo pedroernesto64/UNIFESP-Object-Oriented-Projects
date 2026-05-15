@@ -1,3 +1,6 @@
+// Pedro Ernesto Duarte Pilchowski - RA: 156.331
+// Exercício Mediator - Projetos Orientados a Objetos
+
 public class Main {
     public static void main(String[] args) {
         Mediator chat = new ChatMediator();
