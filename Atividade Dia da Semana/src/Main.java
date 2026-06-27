@@ -8,22 +8,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
 
-/**
- * Programa principal.
- *
- * Fluxo:
- * 1. Pega a data atual do sistema e descobre o dia da semana.
- * 2. Pergunta o nome do usuário e uma informação extra (tarefa, meta...).
- * 3. Pergunta se o usuário quer consultar o dia atual ou outro dia
- *    qualquer, digitado manualmente.
- * 4. Usa o SeletorEstrategia para achar a estratégia certa e executa ela.
- *
- * Repare que esse arquivo não tem nenhum "if (dia.equals("segunda-feira"))"
- * ou parecido -- toda a decisão de qual mensagem/prioridade usar fica
- * dentro das classes de estratégia. Aqui só orquestramos o fluxo e
- * tratamos, em um único lugar, o caso em que não existe estratégia
- * para o dia pedido.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -58,11 +42,6 @@ public class Main {
             estrategiaEncontrada = seletor.obterEstrategia(hoje);
         }
 
-        // Esse é o único ponto do programa que trata a ausência de
-        // estratégia. Em vez de checar "if (estrategia != null)" depois
-        // de cada busca, deixamos o Optional encapsular essa
-        // possibilidade e resolvemos os dois caminhos (achou / não
-        // achou) aqui, de uma vez só, com map/orElseGet.
         ResultadoEstrategia resultado = estrategiaEncontrada
                 .map(estrategia -> estrategia.executar(nomeUsuario, informacaoExtra))
                 .orElseGet(() -> new ResultadoEstrategia(
@@ -73,10 +52,6 @@ public class Main {
                         Prioridade.BAIXA
                 ));
 
-        // Quando a estratégia foi encontrada, mostramos o nome canônico
-        // do dia (ex: "terça-feira"), não o texto exatamente como foi
-        // digitado -- assim "TERÇA-FEIRA" ou "terca" aparecem sempre
-        // da mesma forma na saída.
         String nomeDiaExibido = estrategiaEncontrada
                 .map(EstrategiaDia::nomeDia)
                 .orElse(diaConsultadoTexto);

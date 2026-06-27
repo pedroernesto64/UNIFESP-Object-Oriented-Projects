@@ -4,10 +4,6 @@ import java.time.DayOfWeek;
 import java.util.EnumMap;
 import java.util.Map;
 
-/**
- * Traduz um DayOfWeek do java.time para o nome em português,
- * usado nas mensagens exibidas ao usuário.
- */
 public final class NomeDiaPt {
 
     private static final Map<DayOfWeek, String> NOMES = new EnumMap<>(DayOfWeek.class);

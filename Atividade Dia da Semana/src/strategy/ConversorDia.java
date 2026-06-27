@@ -44,11 +44,6 @@ public final class ConversorDia {
         return Optional.ofNullable(DIAS_POR_NOME.get(chave));
     }
 
-    /**
-     * Remove acentos, espaços nas pontas e deixa tudo minúsculo, para
-     * que "Quarta-feira", "QUARTA" e "quarta-feira" sejam todos
-     * reconhecidos como o mesmo dia.
-     */
     private static String normalizar(String texto) {
         String semEspacos = texto.trim().toLowerCase();
         String semAcento = Normalizer.normalize(semEspacos, Normalizer.Form.NFD);
