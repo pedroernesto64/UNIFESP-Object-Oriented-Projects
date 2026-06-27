@@ -1,0 +1,19 @@
+Exemplo de execução 1 — entrada válida
+========================================
+
+$ java Main
+
+=== Comportamento por Dia da Semana ===
+Digite seu nome: Ana
+Digite uma informação adicional (tarefa, meta semanal etc.): Implementar relatório
+
+Deseja consultar o dia de hoje ou informar outro dia manualmente?
+1 - Usar o dia atual
+2 - Informar outro dia
+Escolha (1 ou 2): 2
+Digite o dia (ex: segunda-feira, terca-feira, sabado...): quarta-feira
+
+Usuário: Ana
+Dia consultado: quarta-feira
+Prioridade: MEDIA
+Mensagem: Dia de revisão: verifique o andamento da atividade "Implementar relatório".

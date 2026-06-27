@@ -1,0 +1,24 @@
+Exemplo de execução 2 — entrada inválida / sem estratégia associada
+=====================================================================
+
+$ java Main
+
+=== Comportamento por Dia da Semana ===
+Digite seu nome: Carlos
+Digite uma informação adicional (tarefa, meta semanal etc.): estudar para a prova
+
+Deseja consultar o dia de hoje ou informar outro dia manualmente?
+1 - Usar o dia atual
+2 - Informar outro dia
+Escolha (1 ou 2): 2
+Digite o dia (ex: segunda-feira, terca-feira, sabado...): feriadão
+
+Usuário: Carlos
+Dia consultado: feriadão
+Prioridade: BAIXA
+Mensagem: Não existe estratégia definida para "feriadão". Nenhuma ação será executada.
+
+Observação: o texto "feriadão" não corresponde a nenhum dia da semana
+conhecido pelo ConversorDia, então o SeletorEstrategia devolve um
+Optional vazio. O Main trata esse caso em um único ponto (orElseGet),
+sem lançar exceção e sem interromper a execução do programa.
